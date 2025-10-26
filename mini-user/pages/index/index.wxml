@@ -1,0 +1,63 @@
+<view class="container">
+  <!-- 头部 -->
+  <view class="header">
+    <text class="title">生活服务平台</text>
+    <text class="subtitle">便捷生活，一键送达</text>
+  </view>
+
+  <!-- 服务分类 -->
+  <view class="category-section">
+    <view class="section-title">服务分类</view>
+    <view class="category-grid">
+      <view 
+        class="category-item" 
+        wx:for="{{categories}}" 
+        wx:key="type"
+        bindtap="toServiceList"
+        data-type="{{item.type}}"
+      >
+        <text class="category-icon">{{item.icon}}</text>
+        <text class="category-name">{{item.name}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 推荐服务 -->
+  <view class="recommend-section">
+    <view class="section-header">
+      <text class="section-title">推荐服务</text>
+      <text class="more" bindtap="toServiceList" data-type="">查看更多</text>
+    </view>
+    <view class="service-grid">
+      <view 
+        class="service-card" 
+        wx:for="{{services}}" 
+        wx:key="id"
+        bindtap="toOrderCreate"
+        data-service="{{item}}"
+      >
+        <image class="service-image" src="{{item.image_url || '/images/default-service.png'}}"></image>
+        <view class="service-info">
+          <text class="service-name">{{item.name}}</text>
+          <text class="service-merchant">{{item.merchant_name}}</text>
+          <view class="service-bottom">
+            <text class="service-price">¥{{item.price}}</text>
+            <text class="service-category">{{item.category}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部导航 -->
+  <view class="bottom-nav">
+    <view class="nav-item" bindtap="toServiceList" data-type="">
+      <text class="nav-icon">🔍</text>
+      <text class="nav-text">全部服务</text>
+    </view>
+    <view class="nav-item" bindtap="toOrderList">
+      <text class="nav-icon">📦</text>
+      <text class="nav-text">我的订单</text>
+    </view>
+  </view>
+</view>

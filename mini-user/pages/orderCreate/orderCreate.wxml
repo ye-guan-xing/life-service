@@ -1,0 +1,38 @@
+<view class="container">
+	<!-- 服务信息 -->
+	<view class="service-card" wx:if="{{service}}">
+		<view class="card-title">服务信息</view>
+		<view class="service-info">
+			<image class="service-image" src="{{service.image_url || '/images/default-service.png'}}"></image>
+			<view class="service-details">
+				<text class="service-name">{{service.name}}</text>
+				<text class="service-merchant">{{service.merchant_name}}</text>
+				<text class="service-price">¥{{service.price}}</text>
+			</view>
+		</view>
+	</view>
+
+	<!-- 用户信息表单 -->
+	<view class="form-card">
+		<view class="card-title">填写订单信息</view>
+
+		<view class="form-item">
+			<text class="form-label">姓名</text>
+			<input class="form-input" placeholder="请输入您的姓名" value="{{userInfo.name}}" bindinput="onNameInput" />
+		</view>
+
+		<view class="form-item">
+			<text class="form-label">手机号</text>
+			<input class="form-input" placeholder="请输入您的手机号" type="number" value="{{userInfo.phone}}" bindinput="onPhoneInput" />
+		</view>
+	</view>
+
+	<!-- 提交按钮 -->
+	<view class="submit-section">
+		<view class="price-display">
+			<text class="price-label">总计：</text>
+			<text class="price-amount">¥{{service ? service.price : '0'}}</text>
+		</view>
+		<button class="submit-btn" bindtap="submitOrder">立即下单</button>
+	</view>
+</view>
