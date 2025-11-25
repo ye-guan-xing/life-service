@@ -1,4 +1,5 @@
 <template>
+  <!-- <link rel="stylesheet" href=" ./css.css" /> -->
   <div class="merchant-page">
     <h2>🏪 商家管理</h2>
 
@@ -100,6 +101,7 @@ export default {
       try {
         isLoading.value = true; // 显示加载状态
         const response = await merchantAPI.getMerchantList();
+        console.log(response.data);
         merchants.value = response.data.data || []; // 兼容空数据
       } catch (error) {
         alert("获取商家列表失败：" + (error.message || "网络错误"));
@@ -199,144 +201,5 @@ export default {
 </script>
 
 <style scoped>
-.merchant-page {
-  padding: 20px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.add-form {
-  margin: 30px 0;
-  padding: 20px;
-  border: 1px solid #e1e1e1;
-  border-radius: 8px;
-  background: #f9f9f9;
-}
-
-.form-group {
-  display: flex;
-  gap: 10px;
-  align-items: end;
-  flex-wrap: wrap;
-}
-
-.input {
-  padding: 8px 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  flex: 1;
-  min-width: 200px;
-  font-size: 14px;
-}
-
-.input:disabled {
-  background: #f0f0f0;
-  cursor: not-allowed;
-}
-
-.btn {
-  padding: 8px 16px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 14px;
-  transition: background 0.3s;
-}
-
-.btn:disabled {
-  background: #9e9e9e;
-  cursor: not-allowed;
-}
-
-.btn-primary {
-  background: #4caf50;
-  color: white;
-}
-
-.btn-primary:hover:not(:disabled) {
-  background: #45a049;
-}
-
-.merchant-list {
-  margin-top: 30px;
-}
-
-.table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 10px;
-  background: white;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-.table th,
-.table td {
-  border: 1px solid #ddd;
-  padding: 12px;
-  text-align: left;
-}
-
-.table th {
-  background: #f5f5f5;
-  font-weight: bold;
-  white-space: nowrap;
-  /* 表头不换行 */
-}
-
-/* 空状态单元格 */
-.empty-cell {
-  text-align: center;
-  padding: 40px 0;
-  color: #999;
-}
-
-/* 状态样式 */
-.status-pending {
-  color: #ff9800;
-  font-weight: bold;
-}
-
-.status-approved {
-  color: #4caf50;
-  font-weight: bold;
-}
-
-/* 操作列样式 */
-.operation-cell {
-  white-space: nowrap;
-  /* 操作按钮不换行 */
-}
-
-.approve-btn {
-  background: #2196f3;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  padding: 4px 10px;
-  cursor: pointer;
-  font-size: 13px;
-  transition: background 0.3s;
-}
-
-.approve-btn:hover:not(:disabled) {
-  background: #0b7dda;
-}
-
-.approve-btn:disabled {
-  background: #bbdefb;
-  cursor: not-allowed;
-}
-
-.approved-text {
-  color: #666;
-  font-size: 13px;
-}
-
-/* 加载状态 */
-.loading {
-  text-align: center;
-  padding: 40px 0;
-  color: #666;
-  font-size: 14px;
-}
+@import "./css.css";
 </style>
