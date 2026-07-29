@@ -2,6 +2,8 @@
 cool_change: mini-user-taro
 role: technical-design
 canonical_spec: openspec
+archived-with: 2026-07-29-mini-user-taro
+status: final
 ---
 
 # Design Doc: mini-user → Taro / uni-app 多端迁移

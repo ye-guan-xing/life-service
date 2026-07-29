@@ -2,6 +2,7 @@
 change: mini-user-taro
 design-doc: docs/superpowers/specs/2026-07-29-mini-user-taro-migration-design.md
 base-ref: 56da8b92a35ee21f0b2330602090514717b694d7
+archived-with: 2026-07-29-mini-user-taro
 ---
 
 ## Source Coverage
