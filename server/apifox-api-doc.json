@@ -1,0 +1,816 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "生活服务平台 API",
+    "description": "生活服务平台接口文档，包含商家、服务、订单管理功能",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080",
+      "description": "本地开发环境"
+    }
+  ],
+  "tags": [
+    {
+      "name": "商家",
+      "description": "商家管理相关接口"
+    },
+    {
+      "name": "服务",
+      "description": "服务管理相关接口"
+    },
+    {
+      "name": "订单",
+      "description": "订单管理相关接口"
+    }
+  ],
+  "paths": {
+    "/api/merchant/add": {
+      "post": {
+        "tags": ["商家"],
+        "summary": "新增商家",
+        "operationId": "addMerchant",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddMerchantRequest"
+              },
+              "example": {
+                "name": "测试商家",
+                "address": "北京市朝阳区",
+                "phone": "13800138000"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "添加成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                },
+                "example": {
+                  "code": 200,
+                  "message": "添加成功",
+                  "data": {
+                    "id": 1
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "添加失败",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "code": 500,
+                  "message": "添加失败",
+                  "data": "错误信息"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/merchant/list": {
+      "get": {
+        "tags": ["商家"],
+        "summary": "获取商家列表",
+        "operationId": "getMerchantList",
+        "responses": {
+          "200": {
+            "description": "获取成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MerchantListResponse"
+                },
+                "example": {
+                  "code": 200,
+                  "message": "获取成功",
+                  "data": [
+                    {
+                      "id": 1,
+                      "name": "测试商家",
+                      "address": "北京市朝阳区",
+                      "phone": "13800138000",
+                      "status": 0
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "获取失败",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/merchant/approve/{id}": {
+      "put": {
+        "tags": ["商家"],
+        "summary": "审核商家",
+        "operationId": "approveMerchant",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "商家ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "审核成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageResponse"
+                },
+                "example": {
+                  "code": 200,
+                  "msg": "商家审核通过！"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "商家不存在",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageResponse"
+                },
+                "example": {
+                  "code": 404,
+                  "msg": "商家不存在"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "服务器出错",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/service/list": {
+      "get": {
+        "tags": ["服务"],
+        "summary": "获取服务列表",
+        "operationId": "getServices",
+        "parameters": [
+          {
+            "name": "category",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "服务分类，不传或传'all'则返回所有分类"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "获取成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceListResponse"
+                },
+                "example": {
+                  "code": 200,
+                  "message": "获取成功",
+                  "data": [
+                    {
+                      "id": 1,
+                      "name": "测试服务",
+                      "price": 99.00,
+                      "category": "餐饮",
+                      "image_url": "https://example.com/image.jpg",
+                      "merchant_id": 1,
+                      "stock": 100,
+                      "status": 1,
+                      "merchant_name": "测试商家"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "获取失败",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/service/add": {
+      "post": {
+        "tags": ["服务"],
+        "summary": "新增服务",
+        "operationId": "addService",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddServiceRequest"
+              },
+              "example": {
+                "merchant_id": 1,
+                "name": "测试服务",
+                "price": 99.00,
+                "category": "餐饮",
+                "image_url": "https://example.com/image.jpg",
+                "stock": 100
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "新增成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                },
+                "example": {
+                  "code": 200,
+                  "message": "新增服务成功",
+                  "data": {
+                    "id": 1
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "新增失败",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "code": 500,
+                  "message": "新增服务失败",
+                  "data": "错误信息"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/service/publish/{id}": {
+      "put": {
+        "tags": ["服务"],
+        "summary": "服务上架",
+        "operationId": "publishService",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "服务ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "上架成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageResponse"
+                },
+                "example": {
+                  "code": 200,
+                  "msg": "服务上架成功！"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "服务不存在",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageResponse"
+                },
+                "example": {
+                  "code": 404,
+                  "msg": "服务不存在"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "服务器出错",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/service/unpublish/{id}": {
+      "put": {
+        "tags": ["服务"],
+        "summary": "服务下架",
+        "operationId": "unpublishService",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "服务ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "下架成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageResponse"
+                },
+                "example": {
+                  "code": 200,
+                  "msg": "服务下架成功！"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "服务不存在",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageResponse"
+                },
+                "example": {
+                  "code": 404,
+                  "msg": "服务不存在"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "服务器出错",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/order/create": {
+      "post": {
+        "tags": ["订单"],
+        "summary": "创建订单",
+        "operationId": "createOrder",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateOrderRequest"
+              },
+              "example": {
+                "service_id": 1,
+                "user_name": "张三",
+                "user_phone": "13800138000"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "创建成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                },
+                "example": {
+                  "code": 200,
+                  "message": "创建定单成功",
+                  "data": {
+                    "id": 1
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "创建失败",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "code": 500,
+                  "message": "创建定单失败",
+                  "error": "错误信息"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/order/list": {
+      "get": {
+        "tags": ["订单"],
+        "summary": "获取订单列表",
+        "operationId": "getOrders",
+        "parameters": [
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "enum": [0, 1, 2]
+            },
+            "description": "订单状态：0-待处理，1-处理中，2-完成"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "获取成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrderListResponse"
+                },
+                "example": {
+                  "code": 200,
+                  "message": "获取成功",
+                  "data": [
+                    {
+                      "id": 1,
+                      "service_id": 1,
+                      "user_name": "张三",
+                      "user_phone": "13800138000",
+                      "status": 0,
+                      "create_time": "2024-01-01 12:00:00",
+                      "server_name": "测试服务",
+                      "merchant_name": "测试商家"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "获取失败",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AddMerchantRequest": {
+        "type": "object",
+        "required": ["name", "address", "phone"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "商家名称"
+          },
+          "address": {
+            "type": "string",
+            "description": "商家地址"
+          },
+          "phone": {
+            "type": "string",
+            "description": "商家电话"
+          }
+        }
+      },
+      "Merchant": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "商家ID"
+          },
+          "name": {
+            "type": "string",
+            "description": "商家名称"
+          },
+          "address": {
+            "type": "string",
+            "description": "商家地址"
+          },
+          "phone": {
+            "type": "string",
+            "description": "商家电话"
+          },
+          "status": {
+            "type": "integer",
+            "description": "商家状态：0-待审核，1-已审核"
+          }
+        }
+      },
+      "MerchantListResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "example": 200
+          },
+          "message": {
+            "type": "string",
+            "example": "获取成功"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Merchant"
+            }
+          }
+        }
+      },
+      "AddServiceRequest": {
+        "type": "object",
+        "required": ["merchant_id", "name", "price", "category", "image_url", "stock"],
+        "properties": {
+          "merchant_id": {
+            "type": "integer",
+            "description": "商家ID"
+          },
+          "name": {
+            "type": "string",
+            "description": "服务名称"
+          },
+          "price": {
+            "type": "number",
+            "format": "double",
+            "description": "服务价格"
+          },
+          "category": {
+            "type": "string",
+            "description": "服务分类"
+          },
+          "image_url": {
+            "type": "string",
+            "description": "服务图片URL"
+          },
+          "stock": {
+            "type": "integer",
+            "description": "库存数量"
+          }
+        }
+      },
+      "Service": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "服务ID"
+          },
+          "name": {
+            "type": "string",
+            "description": "服务名称"
+          },
+          "price": {
+            "type": "number",
+            "format": "double",
+            "description": "服务价格"
+          },
+          "category": {
+            "type": "string",
+            "description": "服务分类"
+          },
+          "image_url": {
+            "type": "string",
+            "description": "服务图片URL"
+          },
+          "merchant_id": {
+            "type": "integer",
+            "description": "商家ID"
+          },
+          "stock": {
+            "type": "integer",
+            "description": "库存数量"
+          },
+          "status": {
+            "type": "integer",
+            "description": "服务状态：0-下架，1-上架"
+          },
+          "merchant_name": {
+            "type": "string",
+            "description": "商家名称"
+          }
+        }
+      },
+      "ServiceListResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "example": 200
+          },
+          "message": {
+            "type": "string",
+            "example": "获取成功"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Service"
+            }
+          }
+        }
+      },
+      "CreateOrderRequest": {
+        "type": "object",
+        "required": ["service_id", "user_name", "user_phone"],
+        "properties": {
+          "service_id": {
+            "type": "integer",
+            "description": "服务ID"
+          },
+          "user_name": {
+            "type": "string",
+            "description": "用户姓名"
+          },
+          "user_phone": {
+            "type": "string",
+            "description": "用户电话"
+          }
+        }
+      },
+      "Order": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "订单ID"
+          },
+          "service_id": {
+            "type": "integer",
+            "description": "服务ID"
+          },
+          "user_name": {
+            "type": "string",
+            "description": "用户姓名"
+          },
+          "user_phone": {
+            "type": "string",
+            "description": "用户电话"
+          },
+          "status": {
+            "type": "integer",
+            "description": "订单状态：0-待处理，1-处理中，2-完成"
+          },
+          "create_time": {
+            "type": "string",
+            "format": "date-time",
+            "description": "创建时间"
+          },
+          "server_name": {
+            "type": "string",
+            "description": "服务名称"
+          },
+          "merchant_name": {
+            "type": "string",
+            "description": "商家名称"
+          }
+        }
+      },
+      "OrderListResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "example": 200
+          },
+          "message": {
+            "type": "string",
+            "example": "获取成功"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Order"
+            }
+          }
+        }
+      },
+      "SuccessResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "example": 200
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer"
+              }
+            }
+          }
+        }
+      },
+      "MessageResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer"
+          },
+          "msg": {
+            "type": "string"
+          }
+        }
+      },
+      "ErrorResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "example": 500
+          },
+          "message": {
+            "type": "string",
+            "example": "操作失败"
+          },
+          "error": {
+            "type": "string",
+            "description": "错误信息"
+          },
+          "data": {
+            "type": "string",
+            "description": "错误数据"
+          }
+        }
+      }
+    }
+  }
+}

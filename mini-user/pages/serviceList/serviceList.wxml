@@ -1,0 +1,39 @@
+<view class="container">
+  <!-- 搜索框 -->
+  <view class="search-box">
+    <input class="search-input" placeholder="搜索服务或商家..." value="{{searchKeyword}}" bindinput="onSearchInput" />
+    <button class="search-btn" bindtap="onSearch">搜索</button>
+  </view>
+
+  <!-- 分类筛选 -->
+  <scroll-view class="category-scroll" scroll-x>
+    <view class="category-list">
+      <view class="category-item {{activeCategory === item ? 'active' : ''}}" wx:for="{{categories}}" wx:key="*this" bindtap="switchCategory" data-category="{{item}}">
+        {{item}}
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- 服务列表 -->
+  <view class="service-list">
+    <view class="service-item" wx:for="{{services}}" wx:key="id" bindtap="toOrderCreate" data-service="{{item}}">
+      <image class="service-image" src="{{item.image_url || '/images/default-service.png'}}"></image>
+      <view class="service-content">
+        <view class="service-header">
+          <text class="service-name">{{item.name}}</text>
+          <text class="service-price">¥{{item.price}}</text>
+        </view>
+        <view class="service-merchant">{{item.merchant_name}}</view>
+        <view class="service-footer">
+          <text class="service-category">{{item.category}}</text>
+          <text class="service-stock">库存: {{item.stock}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty-state" wx:if="{{services.length === 0}}">
+    <text class="empty-text">暂无服务</text>
+  </view>
+</view>

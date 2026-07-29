@@ -1,0 +1,126 @@
+.container {
+  padding: 20rpx;
+  background: #f5f5f5;
+  min-height: 100vh;
+}
+
+.header {
+  text-align: center;
+  margin: 40rpx 0;
+}
+
+.title {
+  font-size: 48rpx;
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+.order-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.order-item {
+  background: white;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.1);
+}
+
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+  padding-bottom: 20rpx;
+  border-bottom: 1rpx solid #ecf0f1;
+}
+
+.order-no {
+  font-size: 26rpx;
+  color: #7f8c8d;
+}
+
+.order-status {
+  font-size: 26rpx;
+  font-weight: bold;
+  padding: 8rpx 20rpx;
+  border-radius: 20rpx;
+}
+
+.order-status.pending {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.order-status.completed {
+  background: #d4edda;
+  color: #155724;
+}
+
+.order-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20rpx;
+}
+
+.service-info {
+  flex: 1;
+}
+
+.service-name {
+  display: block;
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #2c3e50;
+  margin-bottom: 10rpx;
+}
+
+.merchant-name {
+  font-size: 26rpx;
+  color: #7f8c8d;
+}
+
+.service-price {
+  font-size: 36rpx;
+  color: #e74c3c;
+  font-weight: bold;
+}
+
+.order-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20rpx;
+  border-top: 1rpx solid #ecf0f1;
+}
+
+.user-info {
+  font-size: 26rpx;
+  color: #2c3e50;
+}
+
+.order-time {
+  font-size: 24rpx;
+  color: #95a5a6;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 100rpx 0;
+}
+
+.empty-text {
+  display: block;
+  font-size: 32rpx;
+  color: #bdc3c7;
+  margin-bottom: 20rpx;
+}
+
+.empty-desc {
+  display: block;
+  font-size: 28rpx;
+  color: #bdc3c7;
+}
