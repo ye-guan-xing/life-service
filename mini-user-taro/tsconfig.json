@@ -13,11 +13,7 @@
     "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
-    "strict": true,
-    "paths": {
-      "@/*": ["./src/*"]
-    },
-    "typeRoots": ["node_modules/@types"]
+    "strict": true
   },
   "exclude": ["node_modules", "dist"],
   "compileOnSave": false

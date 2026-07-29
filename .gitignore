@@ -4,3 +4,12 @@ build/
 .tmp/
 *.log
 .DS_Store
+
+# AI tooling / generated (regenerable, not app source)
+.codegraph/
+.agents/
+.codex/
+.cursor/
+.vscode/
+.idea/
+*.tsbuildinfo
