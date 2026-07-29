@@ -17,7 +17,7 @@ Page({
   async getOrders() {
     try {
       const orders = await request("/order/list");
-      this.setData({ orders });
+      this.setData({ orders: orders.map(this.formatOrder) });
     } catch (err) {
       wx.showToast({
         title: "加载失败",
@@ -26,17 +26,13 @@ Page({
     }
   },
 
-  // 格式化时间
-  formatTime(timeString) {
-    const date = new Date(timeString);
-    return `${date.getFullYear()}-${(date.getMonth() + 1)
-      .toString()
-      .padStart(2, "0")}-${date
-      .getDate()
-      .toString()
-      .padStart(2, "0")} ${date
-      .getHours()
-      .toString()
-      .padStart(2, "0")}:${date.getMinutes().toString().padStart(2, "0")}`;
+  // 格式化订单时间
+  formatOrder(order) {
+    const date = new Date(order.create_time);
+    const pad = (n) => n.toString().padStart(2, "0");
+    return {
+      ...order,
+      create_time_formatted: `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())} ${pad(date.getHours())}:${pad(date.getMinutes())}`,
+    };
   },
 });

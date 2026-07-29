@@ -30,6 +30,14 @@ Page({
     }
   },
 
+  // 跳转到下单页面
+  toOrderCreate(e) {
+    const service = e.currentTarget.dataset.service
+    wx.navigateTo({
+      url: `/pages/orderCreate/orderCreate?service=${encodeURIComponent(JSON.stringify(service))}`
+    })
+  },
+
   // 跳转到服务列表
   toServiceList(e) {
     const type = e.currentTarget.dataset.type

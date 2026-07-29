@@ -2,9 +2,9 @@
 
 ## A. 原 mini-user bug 修复
 
-- [ ] A1. `mini-user/pages/index/index.js` 补 `toOrderCreate` 方法，跳转 orderCreate 并传 service
-- [ ] A2. `mini-user/pages/orderList/orderList.js` getOrders 中预计算 `create_time_formatted`；`orderList.wxml` 模板改用该字段
-- [ ] A3. `mini-user/utils/request.js` 抽出 `BASE_URL` + `timeout`，统一错误处理
+- [x] A1. `mini-user/pages/index/index.js` 补 `toOrderCreate` 方法，跳转 orderCreate 并传 service
+- [x] A2. `mini-user/pages/orderList/orderList.js` getOrders 中预计算 `create_time_formatted`；`orderList.wxml` 模板改用该字段
+- [x] A3. `mini-user/utils/request.js` 抽出 `BASE_URL` + `timeout`，统一错误处理
 
 ## B. mini-user-taro 工程搭建
 

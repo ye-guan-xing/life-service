@@ -22,7 +22,7 @@
 
 			<view class="order-footer">
 				<text class="user-info">{{item.user_name}} · {{item.user_phone}}</text>
-				<text class="order-time">{{formatTime(item.create_time)}}</text>
+				<text class="order-time">{{item.create_time_formatted}}</text>
 			</view>
 		</view>
 	</view>
