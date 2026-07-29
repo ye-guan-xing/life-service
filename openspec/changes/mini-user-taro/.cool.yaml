@@ -1,5 +1,5 @@
 workflow: full
-phase: review
+phase: verify
 context_compression: off
 build_mode: executing-plans
 build_pause: null
@@ -8,8 +8,8 @@ tdd_mode: direct
 isolation: branch
 verify_mode: null
 review_mode: full
-review_result: pending
-review_report: null
+review_result: pass
+review_report: openspec/changes/mini-user-taro/review-report.md
 review_fail_count: 0
 auto_transition: true
 decision_mode: recommend
