@@ -1,0 +1,26 @@
+{
+	"pages": [
+		{
+			"path": "pages/index/index",
+			"style": { "navigationBarTitleText": "首页" }
+		},
+		{
+			"path": "pages/serviceList/serviceList",
+			"style": { "navigationBarTitleText": "服务列表" }
+		},
+		{
+			"path": "pages/orderCreate/orderCreate",
+			"style": { "navigationBarTitleText": "下单" }
+		},
+		{
+			"path": "pages/orderList/orderList",
+			"style": { "navigationBarTitleText": "我的订单" }
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "white",
+		"navigationBarTitleText": "生活服务平台",
+		"navigationBarBackgroundColor": "#2c3e50",
+		"backgroundColor": "#F8F8F8"
+	}
+}

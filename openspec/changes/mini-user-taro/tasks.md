@@ -25,20 +25,20 @@
 
 ## E. mini-user-uniapp 工程搭建
 
-- [ ] E1. 初始化 `mini-user-uniapp`（Vue3 + TS + Sass），配置微信小程序 + H5
-- [ ] E2. 配置 `pages.json`、`manifest.json`（路由、导航栏样式对齐原版）
-- [ ] E3. 迁移全局样式 `App.vue` / 全局 scss
+- [x] E1. 初始化 `mini-user-uniapp`（Vue3 + TS + Sass），配置微信小程序 + H5
+- [x] E2. 配置 `pages.json`、`manifest.json`（路由、导航栏样式对齐原版）
+- [x] E3. 迁移全局样式 `App.vue` / 全局 scss
 
 ## F. mini-user-uniapp 请求层
 
-- [ ] F1. 实现 `src/utils/request.ts`（uni.request 封装）
+- [x] F1. 实现 `src/utils/request.ts`（uni.request 封装）
 
 ## G. mini-user-uniapp 页面迁移
 
-- [ ] G1. index 页
-- [ ] G2. serviceList 页
-- [ ] G3. orderCreate 页
-- [ ] G4. orderList 页
+- [x] G1. index 页
+- [x] G2. serviceList 页
+- [x] G3. orderCreate 页
+- [x] G4. orderList 页
 
 ## H. 验证
 
