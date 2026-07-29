@@ -1,0 +1,13 @@
+export default {
+  mini: {},
+  h5: {
+    /**
+     * 如果 h5 端编译后体积过大，可以使用 webpack-bundle-analyzer 插件对打包体积进行分析。
+     * 参考：https://github.com/webpack-contrib/webpack-bundle-analyzer
+     */
+    // webpackChain (chain) {
+    //   chain.plugin('analyzer')
+    //     .use(require('webpack-bundle-analyzer').BundleAnalyzerPlugin, [])
+    // }
+  }
+}

@@ -8,20 +8,20 @@
 
 ## B. mini-user-taro 工程搭建
 
-- [ ] B1. 用 Taro CLI 初始化 `mini-user-taro`（Vue3 + TS + Sass），配置微信小程序 + H5 双端
-- [ ] B2. 配置 `app.config.ts`（pages 路由、window 导航栏样式对齐原版）
-- [ ] B3. 迁移全局样式 `app.scss`（对齐原 `app.wxss`）
+- [x] B1. 用 Taro CLI 初始化 `mini-user-taro`（Vue3 + TS + Sass），配置微信小程序 + H5 双端
+- [x] B2. 配置 `app.config.ts`（pages 路由、window 导航栏样式对齐原版）
+- [x] B3. 迁移全局样式 `app.scss`（对齐原 `app.wxss`）
 
 ## C. mini-user-taro 请求层
 
-- [ ] C1. 实现 `src/utils/request.ts`（BASE_URL、timeout、统一错误处理）
+- [x] C1. 实现 `src/utils/request.ts`（BASE_URL、timeout、统一错误处理）
 
 ## D. mini-user-taro 页面迁移
 
-- [ ] D1. index 页（分类 + 推荐服务 + 底部导航，含 toOrderCreate）
-- [ ] D2. serviceList 页（搜索 + 分类筛选 + 列表 + 跳转下单）
-- [ ] D3. orderCreate 页（服务信息 + 表单 + 校验 + 提交）
-- [ ] D4. orderList 页（列表 + 时间格式化预处理 + 空状态）
+- [x] D1. index 页（分类 + 推荐服务 + 底部导航，含 toOrderCreate）
+- [x] D2. serviceList 页（搜索 + 分类筛选 + 列表 + 跳转下单）
+- [x] D3. orderCreate 页（服务信息 + 表单 + 校验 + 提交）
+- [x] D4. orderList 页（列表 + 时间格式化预处理 + 空状态）
 
 ## E. mini-user-uniapp 工程搭建
 

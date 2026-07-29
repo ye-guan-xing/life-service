@@ -1,0 +1,44 @@
+{
+  "name": "mini-user-taro",
+  "version": "1.0.0",
+  "private": true,
+  "description": "life-service user end Taro",
+  "templateInfo": {
+    "name": "default",
+    "typescript": true,
+    "css": "sass",
+    "framework": "Vue3"
+  },
+  "scripts": {
+    "build:weapp": "taro build --type weapp",
+    "build:h5": "taro build --type h5",
+    "dev:weapp": "npm run build:weapp -- --watch",
+    "dev:h5": "npm run build:h5 -- --watch"
+  },
+  "browserslist": ["last 3 versions", "Android >= 4.1", "ios >= 8"],
+  "dependencies": {
+    "@tarojs/components": "4.2.1",
+    "@tarojs/helper": "4.2.1",
+    "@tarojs/plugin-framework-vue3": "4.2.1",
+    "@tarojs/plugin-platform-weapp": "4.2.1",
+    "@tarojs/plugin-platform-h5": "4.2.1",
+    "@tarojs/runtime": "4.2.1",
+    "@tarojs/shared": "4.2.1",
+    "@tarojs/taro": "4.2.1",
+    "vue": "^3.4.21"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.24.0",
+    "@tarojs/cli": "4.2.1",
+    "@tarojs/taro-loader": "4.2.1",
+    "@tarojs/webpack5-runner": "4.2.1",
+    "@types/node": "^20.12.0",
+    "@types/webpack-env": "^1.13.6",
+    "@vue/babel-plugin-jsx": "^1.2.2",
+    "babel-preset-taro": "4.2.1",
+    "sass": "^1.75.0",
+    "typescript": "^5.4.0",
+    "vue-loader": "^17.4.2",
+    "webpack": "5.91.0"
+  }
+}
