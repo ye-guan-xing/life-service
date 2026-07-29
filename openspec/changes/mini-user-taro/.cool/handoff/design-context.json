@@ -1,0 +1,13 @@
+{
+  "change": "mini-user-taro",
+  "phase": "design",
+  "mode": "compact",
+  "canonical_spec": "openspec",
+  "generated_by": "cool-handoff.sh",
+  "context_hash": "53387154445f4557eb164fdaedb597e2f5bb137e9a1f72018f9391a6b182d16c",
+  "files": [
+    { "path": "openspec/changes/mini-user-taro/proposal.md", "sha256": "2082e0292ae4a5700a520e6b78af6c70927ee25bfa97a7daad3f771d31cbb7e1" },
+    { "path": "openspec/changes/mini-user-taro/design.md", "sha256": "ec04cfa566f133c6d46cf68d940c183ea2e2924695e303892c3e91710f82cbe8" },
+    { "path": "openspec/changes/mini-user-taro/tasks.md", "sha256": "c0d4221ad571f267af00b444ddb7cfd7b66eeb2e229b521fbaacbaaa81846822" }
+  ]
+}

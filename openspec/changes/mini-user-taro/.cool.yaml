@@ -1,5 +1,5 @@
 workflow: full
-phase: design
+phase: build
 context_compression: off
 build_mode: null
 build_pause: null
@@ -16,7 +16,7 @@ decision_mode: recommend
 base_branch: master
 open_branch: feature/20260729/mini-user-taro-migration
 base_ref: a0ddeb038d21f6b5ca9eb8b5a29672421d33a14f
-design_doc: null
+design_doc: docs/superpowers/specs/2026-07-29-mini-user-taro-migration-design.md
 plan: null
 verify_result: pending
 verification_report: null
@@ -24,4 +24,6 @@ branch_status: pending
 created_at: 2026-07-29
 verified_at: null
 archived: false
-pending_decision: open-review
+pending_decision: context-compaction
+handoff_context: openspec/changes/mini-user-taro/.cool/handoff/design-context.json
+handoff_hash: 53387154445f4557eb164fdaedb597e2f5bb137e9a1f72018f9391a6b182d16c
