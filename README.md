@@ -9,7 +9,6 @@
 - 后端：Node.js + Express 5 + MySQL 8.0（mysql2）
 - Web 管理后台：Vue 3 + Vue Router + Vite
 - 小程序：Taro / uni-app / 微信原生（三选一）
-- 工具：DataGrip
 
 ## 启动步骤
 
