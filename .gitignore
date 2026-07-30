@@ -12,4 +12,9 @@ build/
 .cursor/
 .vscode/
 .idea/
+.mcp.json
+skills-lock.json
+mini-user-taro/.claude/
+docs/
+openspec/
 *.tsbuildinfo
