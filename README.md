@@ -1,7 +1,39 @@
-# life-service
+# 全域生活服务平台
 
-涵盖 **Web 管理后台 + 小程序用户端** 的全栈项目，整体开发步骤见博客：[https://ye-guan-xing.github.io](https://ye-guan-xing.github.io)。
+## 项目介绍
 
-- **参考价值**：博客梳理的开发框架与流程完整可用，可作为搭建基础。
-- **当前不足**：部分技术细节（如跨域）尚未在博客有效覆盖。
-- **后续计划**：将开发中遇到的问题及方案整理成文档，同步到博客与本仓库。
+一个完整的生活服务平台，包含 Web 管理后台和微信小程序用户端。小程序提供三套实现方案（Taro / uni-app / 原生），按需选用。
+
+## 技术栈
+
+- 后端：Node.js + Express 5 + MySQL 8.0（mysql2）
+- Web 管理后台：Vue 3 + Vue Router + Vite
+- 小程序：Taro / uni-app / 微信原生（三选一）
+- 工具：DataGrip
+
+## 启动步骤
+
+### 后端
+
+1. cd server
+2. npm install
+3. 修改 db/index.js 中的数据库密码
+4. npm run dev
+
+### Web 管理后台
+
+1. cd web-admin
+2. npm install
+3. npm run dev
+
+### 小程序
+
+> Taro 依赖体积大、安装慢，建议先切国内镜像：
+> `npm config set registry https://registry.npmmirror.com`
+
+- Taro：cd mini-user-taro && npm install && npm run dev:weapp，用微信开发者工具打开 dist
+- uni-app：
+  - CLI：cd mini-user-uniapp && npm install && npm run dev:mp-weixin，用微信开发者工具打开 dist/dev/mp-weixin
+  - HBuilderX：用 HBuilderX 打开 mini-user-uniapp，运行 → 运行到小程序模拟器 → 微信开发者工具
+
+- 原生：微信开发者工具直接打开 mini-user-wx，点击预览
