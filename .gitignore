@@ -1,6 +1,8 @@
 node_modules/
 dist/
 build/
+/package.json
+/package-lock.json
 .tmp/
 *.log
 .DS_Store
